@@ -1,5 +1,7 @@
 from Signal import Signal
+import matplotlib.pyplot as plt
 import numpy as np
+from scipy.signal import convolve
 
 
 def getSinusoid():
@@ -26,20 +28,35 @@ def getKernel():
     return kernel
 
 
-def main():
-    # shortedSinusoid = getShortedSinusoid()
-    # shortedSinusoid.plotAsArray()
+def plotSignalAndActivation(signal, activation):
+    plt.figure(figsize=(12, 4))
+    plt.plot(signal, color='k', linewidth=4)
+    plt.imshow(activation[np.newaxis, :],
+               cmap='Reds',
+               aspect='auto',
+               alpha=0.8,
+               extent=(0.5, 8.5, -10, 10))
+    plt.colorbar()
+    plt.show()
 
+
+def main():
+    shortedSinusoid = getShortedSinusoid()
     kernel = getKernel()
-    kernel.plotAsArray()
-    kernel.invert()
-    kernel.plotAsArray()
-    kernel.resetSignal()
-    kernel.plotAsArray()
-    kernel.shift(2)
-    kernel.plotAsArray()
-    kernel.resetSignal()
-    kernel.plotAsArray()
+
+    shortedSinusoid.plot()
+
+    activation = convolve(shortedSinusoid.signal, kernel.signal, mode='valid')
+    activation = Signal(activation, 'Ativação')
+    activation.plotAsArray()
+
+    plotSignalAndActivation(shortedSinusoid.signal, activation.signal)
+
+    sinusoid = getSinusoid()
+    activation = convolve(sinusoid.signal, kernel.signal, mode='valid')
+    activation = Signal(activation, 'Ativação')
+
+    plotSignalAndActivation(sinusoid.signal, activation.signal)
 
 
 if __name__ == "__main__":
