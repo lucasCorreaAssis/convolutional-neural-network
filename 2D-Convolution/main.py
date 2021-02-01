@@ -3,7 +3,7 @@ from EdgesDetector import EdgesDetector
 
 
 ''' Vamos assumir que buscamos detectar
-    bordas em imagens. Usaremos como exemplo a 
+    bordas em imagens. Usaremos como exemplo a
     imagem de uma parede de tijolos: '''
 
 
