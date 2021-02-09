@@ -132,6 +132,4 @@ dmypy.json
 dataset/
 
 # Images samples
-GUI.jpg
-Horizontal Kernel.png
-Vertical Kernel.png
+samples/
