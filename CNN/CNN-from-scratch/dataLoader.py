@@ -42,3 +42,4 @@ class CIFAR10Loader:
             data, _ = self.test_set[i]
             axs[i].imshow(data.permute((1, 2, 0)))
             axs[i].axis('off')
+        plt.show()

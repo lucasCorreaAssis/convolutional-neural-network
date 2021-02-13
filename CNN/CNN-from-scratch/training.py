@@ -2,17 +2,6 @@
 import torch
 from torch import nn, optim
 
-# Data load
-from torch.utils.data import DataLoader
-from torchvision import datasets
-from torchvision import transforms
-
-# Plots e análises
-from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
-import numpy as np
-import time, os
-
 from network import getLeNet
 from dataLoader import CIFAR10Loader
 from train import train
@@ -37,6 +26,7 @@ def main():
     print(lenet)
 
     cifar_loader = CIFAR10Loader()
+    cifar_loader.showTestSamples()
     train_loader = cifar_loader.getTrainLoader(args['batch_size'])
     test_loader = cifar_loader.getTestLoader(args['batch_size'])
 
