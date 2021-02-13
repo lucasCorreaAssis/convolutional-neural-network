@@ -13,4 +13,11 @@ A CNN has multiple types of layers:
 * Pooling
 * Batch normalization
 
-My strategy was to implement a simple version of each layer seperately.
+My strategy was to implement a simple version of each layer seperately and afterwards build a simple block with all of them.
+
+## CNN Training
+
+There are multiple strategies for training a CNN, in this repository I approach three of them:
+* From scratch
+* Features extraction
+* Fine tunning
